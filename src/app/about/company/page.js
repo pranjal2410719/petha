@@ -3,10 +3,10 @@ import Footer from '../../../components/Footer';
 
 export default function Company() {
   const stats = [
-    { number: "500+", label: "Projects Completed" },
-    { number: "50+", label: "Active Collaborators" },
-    { number: "25+", label: "Countries Reached" },
-    { number: "99%", label: "Client Satisfaction" }
+    { number: "1000+", label: "Projects Launched" },
+    { number: "150+", label: "Elite Collaborators" },
+    { number: "45+", label: "Countries Reached" },
+    { number: "99.8%", label: "Success Rate" }
   ];
 
   const values = [
@@ -40,11 +40,12 @@ export default function Company() {
       <section className="bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 h-screen flex items-center" style={{ scrollSnapAlign: 'start' }}>
         <div className="max-w-7xl mx-auto px-4 text-center">
           <h1 className="text-6xl font-bold text-gray-900 mb-6">
-            About <span className="text-blue-600">Braynix Studios</span>
+            About <span className="text-blue-600">DOPO</span>
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-12">
-            We're a modern creator-collaboration platform empowering innovators worldwide to discover, 
-            collaborate, and bring groundbreaking projects to life.
+            DOPO by BStudios is the premier creator-collaboration platform connecting elite innovators worldwide. 
+            We empower developers, designers, and entrepreneurs to discover revolutionary projects and transform 
+            cutting-edge ideas into reality through advanced collaboration technology.
           </p>
           
           {/* Stats */}
@@ -66,30 +67,33 @@ export default function Company() {
             <div>
               <h2 className="text-4xl font-bold text-gray-900 mb-6">Our Mission</h2>
               <p className="text-lg text-gray-600 mb-8">
-                To democratize innovation by connecting creators, entrepreneurs, and collaborators 
-                in a seamless platform that transforms ideas into reality. We believe every great 
-                project starts with passionate people coming together.
+                To revolutionize global innovation by connecting the world's most talented creators, 
+                entrepreneurs, and visionaries on a cutting-edge platform that transforms breakthrough 
+                ideas into market-leading solutions. We believe extraordinary projects emerge when 
+                exceptional minds collaborate without boundaries.
               </p>
               <div className="bg-blue-50 p-6 rounded-lg">
                 <h3 className="text-xl font-semibold text-blue-900 mb-3">What We Do</h3>
                 <ul className="space-y-2 text-blue-700">
-                  <li>• Connect creators with skilled collaborators</li>
-                  <li>• Provide tools for project management and discovery</li>
-                  <li>• Foster innovation through real-time collaboration</li>
-                  <li>• Support projects from concept to completion</li>
+                  <li>• Connect elite creators with top-tier collaborators globally</li>
+                  <li>• Provide advanced AI-powered project matching and discovery</li>
+                  <li>• Enable real-time collaboration with cutting-edge tools</li>
+                  <li>• Support revolutionary projects from ideation to market launch</li>
+                  <li>• Facilitate blockchain, AI, and web3 innovation</li>
                 </ul>
               </div>
             </div>
             <div className="bg-gradient-to-br from-blue-100 to-purple-100 p-8 rounded-2xl">
               <h2 className="text-4xl font-bold text-gray-900 mb-6">Our Vision</h2>
               <p className="text-lg text-gray-600 mb-6">
-                To become the world's leading platform where innovation thrives, 
-                boundaries are broken, and the next generation of groundbreaking 
-                projects are born through collaborative excellence.
+                To become the global epicenter of technological innovation where the world's 
+                most ambitious creators converge, breakthrough technologies emerge, and the 
+                future is built through unprecedented collaborative excellence and 
+                revolutionary digital transformation.
               </p>
               <div className="text-center">
                 <div className="text-6xl mb-4">🌟</div>
-                <p className="text-blue-600 font-semibold">"Empowering Innovation, One Collaboration at a Time"</p>
+                <p className="text-blue-600 font-semibold">"Connecting Visionaries, Creating Tomorrow"</p>
               </div>
             </div>
           </div>
@@ -119,17 +123,18 @@ export default function Company() {
       {/* Team Section */}
       <section className="h-screen bg-white flex items-center" style={{ scrollSnapAlign: 'start' }}>
         <div className="max-w-7xl mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Built by Creators, for Creators</h2>
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">Built by Visionaries, for Innovators</h2>
           <p className="text-xl text-gray-600 mb-12 max-w-3xl mx-auto">
-            Our team consists of passionate developers, designers, and innovators who understand 
-            the challenges of bringing ideas to life. We've built Braynix Studios to be the 
-            platform we wished existed when we started our own creative journeys.
+            Our elite team comprises world-class developers, designers, AI specialists, and blockchain 
+            experts who've revolutionized how innovation happens. We've built DOPO to be the ultimate 
+            platform that accelerates breakthrough technologies and transforms visionary ideas into 
+            market-disrupting realities.
           </p>
           
           <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-12 rounded-2xl">
-            <h3 className="text-3xl font-bold mb-6">Ready to Start Your Next Project?</h3>
+            <h3 className="text-3xl font-bold mb-6">Ready to Build the Future?</h3>
             <p className="text-xl mb-8 opacity-90">
-              Join thousands of creators who are already building the future together.
+              Join elite innovators who are already creating tomorrow's breakthrough technologies.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a href="/projects/discover" className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">

@@ -52,9 +52,9 @@ const App = () => {
         <div className="relative z-10 text-center px-4">
           <h1 className="text-6xl font-extrabold mb-6 tracking-tight">
             <span className="text-gray-600">Welcome to </span>
-            <span className="text-blue-600">Braynix Studios</span>
+            <span className="text-blue-600">DOPO</span>
           </h1>
-          <p className="text-2xl max-w-3xl mx-auto font-light leading-relaxed text-gray-500">Discover innovative AI, web development, and open-source projects. Collaborate with talented developers, designers, and researchers to build next-generation digital solutions. Join the future of creator collaboration.</p>
+          <p className="text-2xl max-w-3xl mx-auto font-light leading-relaxed text-gray-500">The premier creator collaboration platform by BStudios. Connect with elite developers, designers, and innovators worldwide. Transform revolutionary ideas into reality with cutting-edge AI, blockchain, and next-generation digital solutions. Shape the future of technology together.</p>
           <div className="mt-8 flex gap-4 justify-center">
             <a href="/projects/discover" className="bg-white/20 backdrop-blur-sm text-white px-8 py-3 rounded-lg hover:bg-white/30 transition-colors border border-white/30">Projects</a>
             <a href="/projects/top-growing" className="bg-white/20 backdrop-blur-sm text-white px-8 py-3 rounded-lg hover:bg-white/30 transition-colors border border-white/30">Leaderboard</a>

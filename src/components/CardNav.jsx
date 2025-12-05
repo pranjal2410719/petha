@@ -8,7 +8,7 @@ import { getNavigationItems } from '../utils/navigation';
 const CardNav = ({
   className = '',
   ease = 'power3.out',
-  baseColor = '#fff',
+  baseColor = 'rgba(249, 250, 251, 0.95)',
   menuColor = '#000',
   buttonBgColor = '#111',
   buttonTextColor = '#fff'
@@ -220,8 +220,7 @@ const CardNav = ({
 
           <div className="logo-container flex items-center md:absolute md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 order-1 md:order-none">
             <a href="/" className="text-xl font-semibold cursor-pointer">
-              <span className="text-black">Braynix</span>
-              <span className="text-blue-600"> Studios</span>
+              <span className="text-blue-600 font-bold">DOPO</span>
             </a>
           </div>
 

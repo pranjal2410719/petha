@@ -1,6 +1,14 @@
 {
-  "name": "bb",
-  "version": "0.1.0",
+  "name": "dopo-bstudios",
+  "version": "2.0.0",
+  "description": "DOPO by BStudios - Premier Creator Collaboration Platform",
+  "author": "DOPO by BStudios",
+  "homepage": "https://dopo-bstudios.vercel.app",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dopo-bstudios/platform"
+  },
+  "keywords": ["collaboration", "creators", "innovation", "AI", "blockchain", "web3", "developers", "designers", "projects", "platform"],
   "private": true,
   "scripts": {
     "dev": "next dev",

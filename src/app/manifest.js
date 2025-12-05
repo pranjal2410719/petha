@@ -1,8 +1,8 @@
 export default function manifest() {
   return {
-    name: 'Braynix Studios - Creator Collaboration Platform',
-    short_name: 'Braynix Studios',
-    description: 'Discover innovative projects and collaborate with talented creators worldwide',
+    name: 'DOPO by BStudios - Premier Creator Collaboration Platform',
+    short_name: 'DOPO',
+    description: 'Premier creator collaboration platform connecting elite developers, designers, and innovators worldwide for revolutionary project development',
     start_url: '/',
     display: 'standalone',
     background_color: '#000000',

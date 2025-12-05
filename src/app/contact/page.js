@@ -30,7 +30,7 @@ export default function Contact() {
       icon: '📧',
       title: 'Email Support',
       description: 'Get help with your account or projects',
-      contact: '2k24.cs1l.2410719@gmail.com',
+      contact: 'support@dopo-bstudios.com',
       response: '24 hours'
     },
     {
@@ -44,7 +44,7 @@ export default function Contact() {
       icon: '🤝',
       title: 'Partnership',
       description: 'Collaborate with us on projects',
-      contact: 'yapranjal31@gmail.com',
+      contact: 'partnerships@dopo-bstudios.com',
       response: '48 hours'
     }
   ];
@@ -57,9 +57,10 @@ export default function Contact() {
         <div className="max-w-7xl mx-auto px-4">
           {/* Header */}
           <div className="text-center mb-16 mt-16">
-            <h1 className="text-5xl font-bold text-gray-900 mb-6">Get in Touch</h1>
+            <h1 className="text-5xl font-bold text-gray-900 mb-6">Connect with DOPO</h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Have questions, need support, or want to collaborate? We're here to help you succeed.
+              Ready to revolutionize your next project? Need elite collaboration support? 
+              Our innovation experts are here to accelerate your success.
             </p>
           </div>
 
