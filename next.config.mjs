@@ -1,6 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactCompiler: false,
   
   // SEO and Performance Optimizations
   compress: true,
@@ -76,11 +75,7 @@ const nextConfig = {
     ];
   },
   
-  // Disable experimental features to fix build error
-  // experimental: {
-  //   optimizeCss: true,
-  //   scrollRestoration: true,
-  // },
+
 };
 
 export default nextConfig;
