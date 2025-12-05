@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import LoginForm from '../../components/auth/LoginForm';
 import SignupForm from '../../components/auth/SignupForm';
+import CardNav from '../../components/CardNav';
 
 export default function AuthPage() {
   const [isLogin, setIsLogin] = useState(true);
@@ -11,8 +12,11 @@ export default function AuthPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center">
-      <div className="bg-white p-8 rounded-2xl shadow-xl max-w-md w-full mx-4">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
+      <CardNav />
+      
+      <div className="min-h-screen flex items-center justify-center pt-20">
+        <div className="bg-white p-8 rounded-2xl shadow-xl max-w-md w-full mx-4">
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold text-gray-900 mb-2">
             {isLogin ? 'Welcome Back' : 'Create Account'}
@@ -33,6 +37,7 @@ export default function AuthPage() {
             onSwitchToLogin={() => setIsLogin(true)}
           />
         )}
+        </div>
       </div>
     </div>
   );
