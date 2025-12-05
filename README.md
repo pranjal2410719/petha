@@ -9,7 +9,7 @@ The premier creator-collaboration platform built with Next.js 16, revolutionizin
 - **Immersive 3D Experiences** - Interactive Three.js hyperspeed effects and cutting-edge visual experiences
 - **Multi-Provider Authentication** - Google OAuth + Email/Password with enterprise-grade Supabase security
 - **Premium Responsive Design** - Mobile-first architecture with sophisticated animated navigation
-- **Comprehensive Project Management** - Full CRUD operations with advanced author permissions and role-based access
+- **Comprehensive Project Management** - Full CRUD operations with advanced author permissions, role-based access, and detailed project descriptions with smart truncation
 - **Unified Contact System** - Multi-channel contact page with intelligent inquiry routing
 - **Elite Company Showcase** - Full-screen company presentation with mission, values, and innovation metrics
 - **Innovation Roadmap** - Comprehensive roadmap showcasing next-generation social and collaboration features
@@ -116,7 +116,7 @@ Visit [http://localhost:3000](http://localhost:3000)
 
 - **CardNav**: Animated navigation with GSAP, responsive hamburger menu, auth-aware content
 - **Hyperspeed**: 3D WebGL scene with multiple distortion effects used across pages
-- **ProjectCard**: Interactive project displays with author controls
+- **ProjectCard**: Interactive project displays with 3-line description preview and author controls
 - **Dashboard**: Real-time project management with edit/delete capabilities
 - **Auth Forms**: Google OAuth + traditional email/password forms
 - **Contact System**: Comprehensive contact form with FAQ and support info
@@ -153,6 +153,7 @@ Run `database-migration.sql` in your Supabase SQL Editor for complete setup.
 ## 🔧 Configuration Files
 
 - `database-migration.sql` - Complete database setup (Version 2.0)
+- `sih-projects-insert.sql` - SIH 2025 projects with comprehensive details
 - `next.config.mjs` - Next.js configuration with React Compiler
 - `tailwind.config.js` - Tailwind CSS configuration
 - `src/utils/navigation.js` - Centralized navigation configuration
@@ -182,8 +183,8 @@ MIT License - Built by DOPO by BStudios
 
 ---
 
-**Version**: 2.0
-**Last Updated**: December 2024
+**Version**: 2.1
+**Last Updated**: January 2025
 **Status**: Production Ready - Revolutionizing Creator Collaboration
 **Platform**: Global Innovation Hub
 **Mission**: Connecting Visionaries, Creating Tomorrow

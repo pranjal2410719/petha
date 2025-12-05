@@ -22,7 +22,7 @@ const ProjectCard = ({ project, rank, isTop4 = false }) => {
               {project.name}
             </h3>
             
-            <p className="text-blue-600 text-sm mb-4 line-clamp-2">
+            <p className="text-blue-600 text-sm mb-4 line-clamp-3">
               {project.description}
             </p>
           </div>
@@ -69,7 +69,7 @@ const ProjectCard = ({ project, rank, isTop4 = false }) => {
             {project.name}
           </h3>
           
-          <p className={`text-gray-600 ${isTop4 ? 'text-base' : 'text-sm'} mb-4 line-clamp-2`}>
+          <p className={`text-gray-600 ${isTop4 ? 'text-base' : 'text-sm'} mb-4 line-clamp-3`}>
             {project.description}
           </p>
         </div>
