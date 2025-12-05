@@ -1,5 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Disable Turbopack to fix build error
+  turbo: false,
   reactCompiler: true,
   
   // SEO and Performance Optimizations

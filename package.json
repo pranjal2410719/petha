@@ -11,8 +11,8 @@
   "keywords": ["collaboration", "creators", "innovation", "AI", "blockchain", "web3", "developers", "designers", "projects", "platform"],
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "next dev --turbo=false",
+    "build": "next build --no-turbo",
     "start": "next start",
     "lint": "eslint"
   },
