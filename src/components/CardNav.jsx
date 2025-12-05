@@ -63,8 +63,10 @@ const CardNav = ({
     const navEl = navRef.current;
     if (!navEl) return null;
 
+    const validCards = cardsRef.current.slice(0, 3).filter(Boolean);
+    
     gsap.set(navEl, { height: 60, overflow: 'hidden' });
-    gsap.set(cardsRef.current, { y: 50, opacity: 0 });
+    gsap.set(validCards, { y: 50, opacity: 0 });
 
     const tl = gsap.timeline({ paused: true });
 
@@ -74,7 +76,7 @@ const CardNav = ({
       ease
     });
 
-    tl.to(cardsRef.current, { y: 0, opacity: 1, duration: 0.4, ease, stagger: 0.08 }, '-=0.1');
+    tl.to(validCards, { y: 0, opacity: 1, duration: 0.4, ease, stagger: 0.08 }, '-=0.1');
 
     return tl;
   };
@@ -265,7 +267,7 @@ const CardNav = ({
                     '/projects/discover', 
                     '/projects/new-proposal',
                     '/projects/top-growing',
-                    '/contact/email',
+                    '/contact',
                     '/dashboard',
                     '/auth'
                   ].includes(item.cardHref);
@@ -288,7 +290,7 @@ const CardNav = ({
                     '/projects/discover', 
                     '/projects/new-proposal',
                     '/projects/top-growing',
-                    '/contact/email',
+                    '/contact',
                     '/dashboard',
                     '/auth'
                   ].includes(lnk.href);
