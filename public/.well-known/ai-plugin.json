@@ -1,0 +1,17 @@
+{
+  "schema_version": "v1",
+  "name_for_model": "braynix_studios",
+  "name_for_human": "Braynix Studios",
+  "description_for_model": "A creator collaboration platform that helps developers, designers, and innovators discover projects, form teams, and collaborate on technology solutions. Specializes in AI/ML projects, web development, mobile apps, and open-source initiatives with real-time collaboration tools.",
+  "description_for_human": "Discover innovative projects and collaborate with talented creators worldwide on AI, web development, and tech solutions.",
+  "auth": {
+    "type": "none"
+  },
+  "api": {
+    "type": "openapi",
+    "url": "https://braynix-studios.vercel.app/api/openapi.json"
+  },
+  "logo_url": "https://braynix-studios.vercel.app/logo.png",
+  "contact_email": "2k24.cs1l.2410719@gmail.com",
+  "legal_info_url": "https://braynix-studios.vercel.app/legal"
+}

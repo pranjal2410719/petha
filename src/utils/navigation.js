@@ -44,7 +44,7 @@ export const getNavigationItems = (isAuthenticated = false) => [
     bgColor: "#1a1a1a",
     textColor: "#fff",
     links: [
-      { label: "Pricing", ariaLabel: "Pricing Plans", href: "/pricing" },
+      { label: "Pricing", ariaLabel: "Pricing Plans", href: "#" },
       { label: "Contact Us", ariaLabel: "Contact Us", href: "/contact" },
     ],
   },

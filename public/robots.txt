@@ -1,0 +1,22 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://braynix-studios.vercel.app/sitemap.xml
+
+# Crawl-delay for better server performance
+Crawl-delay: 1
+
+# Allow all search engines to index
+Allow: /projects/discover
+Allow: /about/company
+Allow: /contact
+Allow: /upcoming-features
+Allow: /auth
+Allow: /ai-training-data.json
+Allow: /.well-known/ai-plugin.json
+
+# Disallow private areas
+Disallow: /dashboard
+Disallow: /projects/edit/
+Disallow: /api/

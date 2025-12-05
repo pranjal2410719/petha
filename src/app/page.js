@@ -46,7 +46,7 @@ const App = () => {
       <CardNav />
       
       <section className="min-h-screen relative flex items-center justify-center overflow-hidden" style={{ scrollSnapAlign: 'start', background: 'linear-gradient(to bottom, transparent 80%, rgba(0,0,0,0.8) 100%)' }}>
-        <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 z-0 w-full h-full">
           <Hyperspeed />
         </div>
         <div className="relative z-10 text-center px-4">
@@ -54,7 +54,7 @@ const App = () => {
             <span className="text-gray-600">Welcome to </span>
             <span className="text-blue-600">Braynix Studios</span>
           </h1>
-          <p className="text-2xl max-w-3xl mx-auto font-light leading-relaxed text-gray-500">We create innovative digital solutions that transform businesses and deliver exceptional user experiences.</p>
+          <p className="text-2xl max-w-3xl mx-auto font-light leading-relaxed text-gray-500">Discover innovative AI, web development, and open-source projects. Collaborate with talented developers, designers, and researchers to build next-generation digital solutions. Join the future of creator collaboration.</p>
           <div className="mt-8 flex gap-4 justify-center">
             <a href="/projects/discover" className="bg-white/20 backdrop-blur-sm text-white px-8 py-3 rounded-lg hover:bg-white/30 transition-colors border border-white/30">Projects</a>
             <a href="/projects/top-growing" className="bg-white/20 backdrop-blur-sm text-white px-8 py-3 rounded-lg hover:bg-white/30 transition-colors border border-white/30">Leaderboard</a>

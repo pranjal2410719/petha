@@ -1,6 +1,7 @@
 -- =====================================================
 -- BRAYNIX STUDIOS DATABASE MIGRATION
 -- Complete database setup for creator-collaboration platform
+-- Version: 2.0 - Updated with latest features
 -- =====================================================
 
 -- =====================================================

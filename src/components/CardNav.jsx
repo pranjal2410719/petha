@@ -285,22 +285,12 @@ const CardNav = ({
               </div>
               <div className="nav-card-links mt-auto flex flex-col gap-[2px]">
                 {item.links?.map((lnk, i) => {
-                  const isImplemented = [
-                    '/about/company',
-                    '/projects/discover', 
-                    '/projects/new-proposal',
-                    '/projects/top-growing',
-                    '/contact',
-                    '/dashboard',
-                    '/auth'
-                  ].includes(lnk.href);
-                  
                   return (
                     <a
                       key={`${lnk.label}-${i}`}
                       className="nav-card-link inline-flex items-center gap-[6px] no-underline cursor-pointer transition-opacity duration-300 hover:opacity-75 text-[15px] md:text-[16px]"
-                      href={isImplemented ? lnk.href : '#'}
-                      onClick={!isImplemented ? (e) => { e.preventDefault(); alert('Coming Soon!'); } : undefined}
+                      href={lnk.href === '#' ? '#' : lnk.href}
+                      onClick={lnk.href === '#' ? (e) => { e.preventDefault(); alert('Coming Soon!'); } : undefined}
                       aria-label={lnk.ariaLabel}
                     >
                       <GoArrowUpRight className="nav-card-link-icon shrink-0" aria-hidden="true" />

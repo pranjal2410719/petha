@@ -6,10 +6,13 @@ A modern creator-collaboration platform built with Next.js 16, enabling project 
 
 - **Project Discovery** - Browse and explore innovative projects with real-time updates
 - **Real-time Collaboration** - Live collaboration requests and team management
-- **3D Animations** - Interactive Three.js hyperspeed effects on homepage
+- **3D Animations** - Interactive Three.js hyperspeed effects across pages
 - **Authentication** - Google OAuth + Email/Password with Supabase
 - **Responsive Design** - Mobile-first with animated navigation
 - **Project Management** - Full CRUD operations with author permissions
+- **Contact System** - Unified contact page with multiple inquiry types
+- **Company Information** - Full-screen company page with mission and values
+- **Upcoming Features** - Roadmap page showcasing future social features
 - **Audit System** - Complete change tracking and logging
 
 ## 🛠️ Tech Stack
@@ -26,18 +29,25 @@ A modern creator-collaboration platform built with Next.js 16, enabling project 
 ```
 src/
 ├── app/                    # App Router pages
+│   ├── about/             # Company information
+│   │   └── company/       # Full-screen company page
 │   ├── auth/              # Authentication (Google OAuth + Email)
+│   ├── contact/           # Unified contact system
 │   ├── dashboard/         # User dashboard with project management
+│   ├── pricing/           # Pricing plans (Coming Soon)
 │   ├── projects/          # Project-related pages
 │   │   ├── discover/      # Browse all projects
 │   │   ├── new-proposal/  # Create new projects
 │   │   ├── top-growing/   # Trending projects
 │   │   └── edit/[id]/     # Edit project (authors only)
-│   └── project/[id]/      # Dynamic project details
+│   ├── project/[id]/      # Dynamic project details
+│   ├── upcoming-features/ # Feature roadmap page
+│   └── page.js           # Homepage with Hyperspeed
 ├── components/            # Reusable UI components
 │   ├── auth/             # Login/Signup forms
 │   ├── dashboard/        # Dashboard components
-│   └── CardNav.jsx       # Animated navigation
+│   ├── CardNav.jsx       # Animated navigation with GSAP
+│   └── Hyperspeed.jsx    # 3D WebGL background component
 ├── lib/                  # Database & Supabase config
 └── utils/               # Helper functions and constants
 ```
@@ -100,11 +110,13 @@ Visit [http://localhost:3000](http://localhost:3000)
 
 ## 🎨 Key Components
 
-- **CardNav**: Animated navigation with GSAP, responsive hamburger menu
-- **Hyperspeed**: 3D WebGL scene with multiple distortion effects
+- **CardNav**: Animated navigation with GSAP, responsive hamburger menu, auth-aware content
+- **Hyperspeed**: 3D WebGL scene with multiple distortion effects used across pages
 - **ProjectCard**: Interactive project displays with author controls
 - **Dashboard**: Real-time project management with edit/delete capabilities
 - **Auth Forms**: Google OAuth + traditional email/password forms
+- **Contact System**: Comprehensive contact form with FAQ and support info
+- **Company Page**: Full-screen sections with scroll effects and statistics
 
 ## 🔄 Real-time Features
 
@@ -136,10 +148,25 @@ Run `database-migration.sql` in your Supabase SQL Editor for complete setup.
 
 ## 🔧 Configuration Files
 
-- `database-migration.sql` - Complete database setup
+- `database-migration.sql` - Complete database setup (Version 2.0)
 - `next.config.mjs` - Next.js configuration with React Compiler
 - `tailwind.config.js` - Tailwind CSS configuration
-- `supabase-schema.sql` - Legacy schema file (use database-migration.sql instead)
+- `src/utils/navigation.js` - Centralized navigation configuration
+
+## 🔮 Upcoming Features
+
+- **Real-time Chat System** - Instant messaging with file sharing (Q2 2024)
+- **Comment System** - Rich commenting with mentions and notifications (Q2 2024)
+- **Profile Search & Discovery** - Advanced creator search by skills (Q3 2024)
+- **Following System** - Follow creators and get project updates (Q3 2024)
+- **AI-Powered Matching** - Smart project-creator matching (Q4 2024)
+- **Mobile App** - Native iOS/Android apps (Q1 2025)
+
+## 📞 Contact & Support
+
+- **General Support**: 2k24.cs1l.2410719@gmail.com
+- **Partnerships**: yapranjal31@gmail.com
+- **Support Hours**: Monday-Friday, 9 AM - 6 PM IST
 
 ## 📝 License
 
@@ -147,5 +174,6 @@ MIT License - Built by Braynix Studios
 
 ---
 
-**Live Demo**: [Your Vercel URL]
-**Repository**: [Your GitHub URL]
+**Version**: 2.0
+**Last Updated**: December 2024
+**Status**: Active Development
