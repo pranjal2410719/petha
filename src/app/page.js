@@ -1,65 +1,70 @@
-import Image from "next/image";
+import CardNav from '../components/CardNav';
+import Footer from '../components/Footer';
+import Hyperspeed from '../components/Hyperspeed';
+const App = () => {
+  const items = [
+    {
+      label: "About",
+      bgColor: "#0D0716",
+      textColor: "#fff",
+      links: [
+        { label: "Company", ariaLabel: "About Company", href: "/about/company" },
+        { label: "Careers", ariaLabel: "About Careers", href: "/about/careers" }
+      ]
+    },
+    {
+      label: "Projects", 
+      bgColor: "#170D27",
+      textColor: "#fff",
+      cardHref: "/projects/discover",
+      links: [
+        { label: "New Proposal", ariaLabel: "New Proposal", href: "/projects/new-proposal" },
+        { label: "Top Growing Project", ariaLabel: "Top Growing Project", href: "/projects/top-growing" }
+      ]
+    },
+    {
+      label: "Contact",
+      bgColor: "#271E37", 
+      textColor: "#fff",
+      links: [
+        { label: "Collaborators", ariaLabel: "Collaborators", href: "/contact/collaborators" }
+      ]
+    },
+    {
+      label: "Leaderboard",
+      bgColor: "#1E2A37", 
+      textColor: "#fff",
+      links: [
+        { label: "Top Contributors", ariaLabel: "Top Contributors", href: "/leaderboard/contributors" },
+        { label: "Best Collaborators", ariaLabel: "Best Collaborators", href: "/leaderboard/collaborators" }
+      ]
+    }
+  ];
 
-export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.js file.
+    <div className="scroll-smooth" style={{ scrollBehavior: 'smooth', scrollSnapType: 'y mandatory' }}>
+      <CardNav />
+      
+      <section className="min-h-screen relative flex items-center justify-center overflow-hidden" style={{ scrollSnapAlign: 'start', background: 'linear-gradient(to bottom, transparent 80%, rgba(0,0,0,0.8) 100%)' }}>
+        <div className="absolute inset-0 z-0">
+          <Hyperspeed />
+        </div>
+        <div className="relative z-10 text-center px-4">
+          <h1 className="text-6xl font-extrabold mb-6 tracking-tight">
+            <span className="text-gray-600">Welcome to </span>
+            <span className="text-blue-600">Braynix Studios</span>
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+          <p className="text-2xl max-w-3xl mx-auto font-light leading-relaxed text-gray-500">We create innovative digital solutions that transform businesses and deliver exceptional user experiences.</p>
+          <div className="mt-8 flex gap-4 justify-center">
+            <a href="/projects/discover" className="bg-white/20 backdrop-blur-sm text-white px-8 py-3 rounded-lg hover:bg-white/30 transition-colors border border-white/30">Projects</a>
+            <a href="/projects/top-growing" className="bg-white/20 backdrop-blur-sm text-white px-8 py-3 rounded-lg hover:bg-white/30 transition-colors border border-white/30">Leaderboard</a>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+      </section>
+
+
     </div>
   );
-}
+};
+
+export default App;

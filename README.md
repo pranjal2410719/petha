@@ -1,36 +1,80 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Braynix Studios
 
-## Getting Started
+A modern creator-collaboration platform built with Next.js 16, enabling project discovery, proposal submission, and team formation.
 
-First, run the development server:
+## 🚀 Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **Project Discovery** - Browse and explore innovative projects
+- **Real-time Collaboration** - Live updates and collaboration requests
+- **3D Animations** - Interactive Three.js hyperspeed effects
+- **Authentication** - Secure Supabase auth with protected routes
+- **Responsive Design** - Mobile-first with Tailwind CSS
+- **Project Management** - Create, manage, and track projects
+
+## 🛠️ Tech Stack
+
+- **Frontend**: Next.js 16, React 19, Tailwind CSS 4
+- **Backend**: Supabase (Auth, Database, Real-time)
+- **3D Graphics**: Three.js, PostProcessing
+- **Animations**: GSAP
+- **Styling**: Tailwind CSS with custom components
+
+## 📁 Project Structure
+
+```
+src/
+├── app/                 # App Router pages
+│   ├── auth/           # Authentication
+│   ├── dashboard/      # User dashboard
+│   ├── projects/       # Project pages
+│   └── project/[id]/   # Dynamic project details
+├── components/         # Reusable UI components
+├── lib/               # Database & Supabase config
+└── utils/             # Helper functions
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Getting Started
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+1. **Install dependencies**:
+```bash
+npm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+2. **Set up Supabase**:
+   - Create a Supabase project
+   - Run the SQL schema from `supabase-schema.sql`
+   - Update Supabase credentials in `src/lib/supabase.js`
 
-## Learn More
+3. **Run development server**:
+```bash
+npm run dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+4. **Open [http://localhost:3000](http://localhost:3000)**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🔐 Authentication
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Sign up/Login required for project creation
+- Protected routes with automatic redirects
+- Real-time auth state management
 
-## Deploy on Vercel
+## 📊 Database Schema
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Projects**: Core project data with RLS policies
+- **Collaboration Requests**: User collaboration system
+- **Banned Users**: Moderation system
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🎨 Key Components
+
+- **CardNav**: Animated navigation with GSAP
+- **Hyperspeed**: 3D WebGL scene with shaders
+- **ProjectCard**: Interactive project displays
+- **Dashboard**: User project management
+
+## 🚀 Deployment
+
+Deploy on [Vercel](https://vercel.com) with automatic Supabase integration.
+
+## 📝 License
+
+MIT License - Built by Braynix Studios
