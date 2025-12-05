@@ -76,11 +76,11 @@ const nextConfig = {
     ];
   },
   
-  // Experimental features for performance
-  experimental: {
-    optimizeCss: true,
-    scrollRestoration: true,
-  },
+  // Disable experimental features to fix build error
+  // experimental: {
+  //   optimizeCss: true,
+  //   scrollRestoration: true,
+  // },
 };
 
 export default nextConfig;
