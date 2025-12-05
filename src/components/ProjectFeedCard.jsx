@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import { supabase } from '../lib/supabase';
 import { updateProjectLikes, createCollaborationRequest } from '../lib/database';
+import CollaborationModal from './CollaborationModal';
 
 const ProjectFeedCard = ({ project }) => {
   const [isLiked, setIsLiked] = useState(false);
@@ -10,20 +11,23 @@ const ProjectFeedCard = ({ project }) => {
   const [isBanned, setIsBanned] = useState(false);
   const [collaborationStatus, setCollaborationStatus] = useState(null);
   const [currentUser, setCurrentUser] = useState(null);
+  const [user, setUser] = useState(null);
+  const [showCollabModal, setShowCollabModal] = useState(false);
   
   useEffect(() => {
     const getUser = async () => {
       const { data: { user } } = await supabase.auth.getUser();
       if (user) {
         setCurrentUser(user.email);
+        setUser(user);
       }
     };
     getUser();
   }, []);
 
   const handleCardClick = (e) => {
-    // Don't navigate if clicking on buttons
-    if (e.target.closest('button')) return;
+    // Don't navigate if clicking on buttons or if modal is open
+    if (e.target.closest('button') || showCollabModal) return;
     
     const projectId = project.id;
     window.location.href = `/project/${projectId}`;
@@ -40,26 +44,9 @@ const ProjectFeedCard = ({ project }) => {
     setIsBookmarked(!isBookmarked);
   };
 
-  const handleCollaborate = async () => {
-    if (isBanned || !currentUser) return;
-    
-    const { data: { user } } = await supabase.auth.getUser();
-    if (!user) return;
-    
-    const newRequest = {
-      project_id: project.id,
-      project_name: project.name,
-      project_author_id: project.author_id,
-      requester_id: user.id,
-      requester_email: user.email,
-      status: 'pending'
-    };
-    
-    const { error } = await createCollaborationRequest(newRequest);
-    if (!error) {
-      setCollaborationStatus('pending');
-      alert('Collaboration request sent!');
-    }
+  const handleCollaborate = () => {
+    if (isBanned || !user) return;
+    setShowCollabModal(true);
   };
 
   return (
@@ -149,6 +136,15 @@ const ProjectFeedCard = ({ project }) => {
           </a>
         )}
       </div>
+      
+      {showCollabModal && (
+        <CollaborationModal
+          isOpen={showCollabModal}
+          onClose={() => setShowCollabModal(false)}
+          project={project}
+          user={user}
+        />
+      )}
     </div>
   );
 };

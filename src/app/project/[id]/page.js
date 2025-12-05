@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { getProjectById, updateProjectViews, deleteProject } from '../../../lib/database';
 import { supabase } from '../../../lib/supabase';
 import CardNav from '../../../components/CardNav';
+import CollaborationModal from '../../../components/CollaborationModal';
 
 export default function ProjectDetails() {
   const params = useParams();
@@ -12,6 +13,7 @@ export default function ProjectDetails() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [user, setUser] = useState(null);
+  const [showCollabModal, setShowCollabModal] = useState(false);
 
   useEffect(() => {
     const loadProject = async () => {
@@ -214,7 +216,7 @@ export default function ProjectDetails() {
               ) : (
                 <div className="flex gap-4">
                   <button 
-                    onClick={() => alert('Collaboration request sent!')} 
+                    onClick={() => setShowCollabModal(true)} 
                     className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors"
                   >
                     Collaborate
@@ -239,6 +241,15 @@ export default function ProjectDetails() {
               </div>
             )}
           </div>
+          
+          {showCollabModal && (
+            <CollaborationModal
+              isOpen={showCollabModal}
+              onClose={() => setShowCollabModal(false)}
+              project={project}
+              user={user}
+            />
+          )}
         </div>
       </div>
     </div>

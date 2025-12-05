@@ -4,7 +4,7 @@ import { supabase } from '../../lib/supabase';
 import CardNav from '../../components/CardNav';
 import ProjectStats from '../../components/dashboard/ProjectStats';
 import MyProjects from '../../components/dashboard/MyProjects';
-import CollaborationRequests from '../../components/CollaborationRequests';
+import AdminCollaborationRequests from '../../components/AdminCollaborationRequests';
 
 export default function Dashboard() {
   const [user, setUser] = useState(null);
@@ -41,9 +41,13 @@ export default function Dashboard() {
       <main className="pt-32 p-6">
         <ProjectStats user={user} />
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 h-[calc(100vh-20rem)]">
-          <MyProjects user={user} />
-          <CollaborationRequests projectAuthor={user} />
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div className="bg-white rounded-lg shadow p-6 max-h-96 overflow-y-auto">
+            <MyProjects user={user} />
+          </div>
+          <div className="bg-white rounded-lg shadow p-6 max-h-96 overflow-y-auto">
+            <AdminCollaborationRequests projectId={null} />
+          </div>
         </div>
       </main>
     </div>
