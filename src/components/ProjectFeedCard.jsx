@@ -114,32 +114,40 @@ const ProjectFeedCard = ({ project }) => {
           Like
         </button>
 
-        <button 
-          onClick={handleCollaborate}
-          disabled={isBanned || collaborationStatus === 'pending'}
-          className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-colors ${
-            isBanned ? 'bg-red-50 text-red-400 cursor-not-allowed' :
-            collaborationStatus === 'pending' ? 'bg-gray-50 text-gray-400 cursor-not-allowed' :
-            collaborationStatus === 'rejected' ? 'bg-orange-50 text-orange-600' :
-            'bg-blue-50 text-blue-600 hover:bg-blue-100'
-          }`}
-        >
-          <span>🤝</span>
-          {isBanned ? 'Banned' :
-           collaborationStatus === 'pending' ? 'Pending' :
-           collaborationStatus === 'rejected' ? 'Rejected' :
-           'Collaborate'}
-        </button>
+        {currentUser ? (
+          <>
+            <button 
+              onClick={handleCollaborate}
+              disabled={isBanned || collaborationStatus === 'pending'}
+              className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-colors ${
+                isBanned ? 'bg-red-50 text-red-400 cursor-not-allowed' :
+                collaborationStatus === 'pending' ? 'bg-gray-50 text-gray-400 cursor-not-allowed' :
+                collaborationStatus === 'rejected' ? 'bg-orange-50 text-orange-600' :
+                'bg-blue-50 text-blue-600 hover:bg-blue-100'
+              }`}
+            >
+              <span>🤝</span>
+              {isBanned ? 'Banned' :
+               collaborationStatus === 'pending' ? 'Pending' :
+               collaborationStatus === 'rejected' ? 'Rejected' :
+               'Collaborate'}
+            </button>
 
-        <button 
-          onClick={handleBookmark}
-          className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-colors ${
-            isBookmarked ? 'bg-yellow-50 text-yellow-600' : 'hover:bg-gray-50 text-gray-600'
-          }`}
-        >
-          <span className={isBookmarked ? 'text-yellow-500' : 'text-gray-400'}>🔖</span>
-          Bookmark
-        </button>
+            <button 
+              onClick={handleBookmark}
+              className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-colors ${
+                isBookmarked ? 'bg-yellow-50 text-yellow-600' : 'hover:bg-gray-50 text-gray-600'
+              }`}
+            >
+              <span className={isBookmarked ? 'text-yellow-500' : 'text-gray-400'}>🔖</span>
+              Bookmark
+            </button>
+          </>
+        ) : (
+          <a href="/auth" className="text-blue-600 hover:underline text-sm">
+            Sign in to collaborate
+          </a>
+        )}
       </div>
     </div>
   );

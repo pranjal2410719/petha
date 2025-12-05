@@ -1,7 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { supabase } from '../../lib/supabase';
-import { getUserProjects } from '../../lib/database';
+import { getUserProjects, deleteProject } from '../../lib/database';
 
 const MyProjects = ({ user }) => {
   const [projects, setProjects] = useState([]);
@@ -54,7 +54,7 @@ const MyProjects = ({ user }) => {
           {projects.map((project) => (
             <div key={project.id} className="border border-gray-200 p-4 rounded-lg hover:shadow-md transition-shadow">
               <div className="flex justify-between items-start">
-                <div className="flex-1">
+                <div className="flex-1 cursor-pointer" onClick={() => window.location.href = `/project/${project.id}`}>
                   <h4 className="font-medium text-gray-900">{project.name}</h4>
                   <p className="text-sm text-gray-600 mt-1 line-clamp-2">{project.description}</p>
                   <div className="flex gap-4 mt-2 text-sm text-gray-500">
@@ -70,14 +70,43 @@ const MyProjects = ({ user }) => {
                     ))}
                   </div>
                 </div>
-                <span className={`px-2 py-1 rounded-full text-xs whitespace-nowrap ml-4 ${
-                  project.status === 'Active' ? 'bg-green-100 text-green-800' :
-                  project.status === 'Beta' ? 'bg-blue-100 text-blue-800' :
-                  project.status === 'Alpha' ? 'bg-yellow-100 text-yellow-800' :
-                  'bg-gray-100 text-gray-800'
-                }`}>
-                  {project.status}
-                </span>
+                <div className="flex flex-col gap-2 ml-4">
+                  <span className={`px-2 py-1 rounded-full text-xs whitespace-nowrap ${
+                    project.status === 'Active' ? 'bg-green-100 text-green-800' :
+                    project.status === 'Beta' ? 'bg-blue-100 text-blue-800' :
+                    project.status === 'Alpha' ? 'bg-yellow-100 text-yellow-800' :
+                    'bg-gray-100 text-gray-800'
+                  }`}>
+                    {project.status}
+                  </span>
+                  <div className="flex gap-1">
+                    <button 
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        window.location.href = `/projects/edit/${project.id}`;
+                      }}
+                      className="px-2 py-1 bg-blue-100 text-blue-600 text-xs rounded hover:bg-blue-200"
+                    >
+                      Edit
+                    </button>
+                    <button 
+                      onClick={async (e) => {
+                        e.stopPropagation();
+                        if (confirm('Delete this project?')) {
+                          const { error } = await deleteProject(project.id);
+                          if (error) {
+                            alert('Error: ' + error.message);
+                          } else {
+                            setProjects(projects.filter(p => p.id !== project.id));
+                          }
+                        }
+                      }}
+                      className="px-2 py-1 bg-red-100 text-red-600 text-xs rounded hover:bg-red-200"
+                    >
+                      Delete
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
           ))}

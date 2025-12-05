@@ -101,3 +101,20 @@ export const getProjectById = async (id) => {
     .single();
   return { data, error };
 };
+
+export const updateProject = async (id, updates) => {
+  const { data, error } = await supabase
+    .from('projects')
+    .update(updates)
+    .eq('id', id)
+    .select();
+  return { data, error };
+};
+
+export const deleteProject = async (id) => {
+  const { data, error } = await supabase
+    .from('projects')
+    .delete()
+    .eq('id', id);
+  return { data, error };
+};

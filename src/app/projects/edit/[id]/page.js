@@ -1,14 +1,17 @@
 'use client';
 import { useState, useEffect } from 'react';
-import { supabase } from '../../../lib/supabase';
-import { createProject } from '../../../lib/database';
-import { PROJECT_CATEGORIES, PROJECT_STATUSES, BUDGET_RANGES } from '../../../utils/constants';
-import CardNav from '../../../components/CardNav';
-import Footer from '../../../components/Footer';
+import { useParams } from 'next/navigation';
+import { supabase } from '../../../../lib/supabase';
+import { getProjectById, updateProject } from '../../../../lib/database';
+import { PROJECT_CATEGORIES, PROJECT_STATUSES, BUDGET_RANGES } from '../../../../utils/constants';
+import CardNav from '../../../../components/CardNav';
 
-export default function NewProposal() {
+export default function EditProject() {
+  const params = useParams();
+  const id = params.id;
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [project, setProject] = useState(null);
   const [formData, setFormData] = useState({
     name: '',
     description: '',
@@ -21,17 +24,68 @@ export default function NewProposal() {
   });
 
   useEffect(() => {
-    const checkUser = async () => {
+    const loadProject = async () => {
       const { data: { user } } = await supabase.auth.getUser();
       setUser(user);
-      if (user) {
-        const authorName = user.user_metadata?.name || user.email?.split('@')[0] || 'User';
-        setFormData(prev => ({ ...prev, author: authorName }));
+      
+      if (!user) {
+        window.location.href = '/auth';
+        return;
       }
+
+      const { data, error } = await getProjectById(id);
+      if (error || !data) {
+        alert('Project not found');
+        window.location.href = '/dashboard';
+        return;
+      }
+
+      if (data.author_id !== user.id) {
+        alert('You can only edit your own projects');
+        window.location.href = '/dashboard';
+        return;
+      }
+
+      setProject(data);
+      setFormData({
+        name: data.name,
+        description: data.description,
+        author: data.author,
+        category: data.category,
+        technologies: data.technologies?.join(', ') || '',
+        budget: data.budget,
+        status: data.status,
+        startDate: data.start_date || ''
+      });
       setLoading(false);
     };
-    checkUser();
-  }, []);
+
+    loadProject();
+  }, [id]);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+    const updates = {
+      name: formData.name,
+      description: formData.description,
+      author: formData.author,
+      category: formData.category,
+      technologies: formData.technologies.split(',').map(tech => tech.trim()),
+      budget: formData.budget,
+      status: formData.status,
+      start_date: formData.startDate || new Date().toISOString().split('T')[0]
+    };
+
+    const { error } = await updateProject(id, updates);
+    
+    if (error) {
+      alert('Error updating project: ' + error.message);
+    } else {
+      alert('Project updated successfully!');
+      window.location.href = `/project/${id}`;
+    }
+  };
 
   if (loading) {
     return (
@@ -41,110 +95,15 @@ export default function NewProposal() {
     );
   }
 
-  if (!user) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-emerald-50 to-teal-100">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold text-gray-800 mb-4">Login Required</h1>
-          <p className="text-gray-600 mb-6">You must be logged in to create a project proposal.</p>
-          <a href="/auth" className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700">
-            Login / Sign Up
-          </a>
-        </div>
-      </div>
-    );
-  }
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    
-    const { data: { user } } = await supabase.auth.getUser();
-    if (!user) {
-      alert('Please login to create a project');
-      return;
-    }
-
-    const newProject = {
-      name: formData.name,
-      description: formData.description,
-      author: formData.author,
-      author_id: user.id,
-      category: formData.category,
-      likes: 0,
-      collaborators: 1,
-      views: 0,
-      technologies: formData.technologies.split(',').map(tech => tech.trim()),
-      budget: formData.budget,
-      status: formData.status,
-      start_date: formData.startDate || new Date().toISOString().split('T')[0],
-      team: [formData.author]
-    };
-
-    const { error } = await createProject(newProject);
-    
-    if (error) {
-      alert('Error creating project: ' + error.message);
-    } else {
-      setFormData({
-        name: '',
-        description: '',
-        author: '',
-        category: '',
-        technologies: '',
-        budget: 'Free',
-        status: 'Development',
-        startDate: ''
-      });
-      window.location.href = '/projects/discover';
-    }
-  };
-
-  const items = [
-    {
-      label: "About",
-      bgColor: "#0D0716",
-      textColor: "#fff",
-      links: [
-        { label: "Company", ariaLabel: "About Company", href: "/about/company" }
-      ]
-    },
-    {
-      label: "Projects", 
-      bgColor: "#170D27",
-      textColor: "#fff",
-      cardHref: "/projects/discover",
-      links: [
-        { label: "Discover Projects", ariaLabel: "Discover Projects", href: "/projects/discover" },
-        { label: "New Proposal", ariaLabel: "New Proposal", href: "/projects/new-proposal" },
-        { label: "Top Growing Project", ariaLabel: "Top Growing Project", href: "/projects/top-growing" }
-      ]
-    },
-    {
-      label: "Contact",
-      bgColor: "#271E37", 
-      textColor: "#fff",
-      links: [
-        { label: "Collaborators", ariaLabel: "Collaborators", href: "/contact/collaborators" }
-      ]
-    }
-  ];
-
   return (
     <div>
-      <CardNav
-        items={items}
-        baseColor="#fff"
-        menuColor="#000"
-        buttonBgColor="#111"
-        buttonTextColor="#fff"
-        ease="power3.out"
-      />
+      <CardNav />
       
       <section className="min-h-screen bg-gradient-to-br from-emerald-50 to-teal-100 flex items-center justify-center pt-20">
         <div className="text-center px-4 max-w-5xl">
           <div className="mb-12 px-8 mt-16">
-            <h1 className="text-5xl font-bold text-gray-900 mb-6">New Project Proposal</h1>
-            <p className="text-xl text-gray-600">Submit your innovative project ideas and bring them to life with our expert team.</p>
+            <h1 className="text-5xl font-bold text-gray-900 mb-6">Edit Project</h1>
+            <p className="text-xl text-gray-600">Update your project details</p>
           </div>
           
           <div className="bg-white p-10 rounded-2xl shadow-xl max-w-4xl mx-auto mb-16">
@@ -236,8 +195,6 @@ export default function NewProposal() {
                 </div>
               </div>
               
-
-              
               <div>
                 <label className="block text-left text-sm font-medium text-gray-700 mb-2">Technologies (comma separated) *</label>
                 <input 
@@ -250,16 +207,22 @@ export default function NewProposal() {
                 />
               </div>
               
-              <button type="submit" className="w-full bg-emerald-600 text-white py-4 rounded-lg hover:bg-emerald-700 transition-colors font-semibold text-lg mb-8">
-                Create Project
-              </button>
+              <div className="flex gap-4">
+                <button type="submit" className="flex-1 bg-emerald-600 text-white py-4 rounded-lg hover:bg-emerald-700 transition-colors font-semibold text-lg">
+                  Update Project
+                </button>
+                <button 
+                  type="button" 
+                  onClick={() => window.location.href = `/project/${id}`}
+                  className="flex-1 bg-gray-600 text-white py-4 rounded-lg hover:bg-gray-700 transition-colors font-semibold text-lg"
+                >
+                  Cancel
+                </button>
+              </div>
             </form>
           </div>
         </div>
       </section>
-      <div className="mt-16">
-        <Footer />
-      </div>
     </div>
   );
 }
