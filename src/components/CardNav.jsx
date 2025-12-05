@@ -46,13 +46,14 @@ const CardNav = ({
         const topBar = 60;
         const padding = 16;
         const contentHeight = contentEl.scrollHeight;
+        const buttonHeight = 60; // Add height for mobile button
 
         contentEl.style.visibility = wasVisible;
         contentEl.style.pointerEvents = wasPointerEvents;
         contentEl.style.position = wasPosition;
         contentEl.style.height = wasHeight;
 
-        return topBar + contentHeight + padding;
+        return topBar + contentHeight + buttonHeight + padding;
       }
     }
     return 260;
@@ -308,6 +309,31 @@ const CardNav = ({
               </div>
             </div>
           ))}
+          
+          {/* Mobile CTA Button */}
+          <div className="md:hidden mt-2">
+            {loading ? (
+              <div className="flex items-center justify-center py-3">
+                <div className="w-4 h-4 border-2 border-gray-300 border-t-transparent rounded-full animate-spin"></div>
+              </div>
+            ) : isDashboard && user ? (
+              <button
+                onClick={handleLogout}
+                className="w-full py-3 px-4 rounded-lg font-medium transition-colors duration-300"
+                style={{ backgroundColor: buttonBgColor, color: buttonTextColor }}
+              >
+                Logout
+              </button>
+            ) : (
+              <a
+                href={user ? "/dashboard" : "/auth"}
+                className="block w-full py-3 px-4 rounded-lg font-medium text-center transition-colors duration-300"
+                style={{ backgroundColor: buttonBgColor, color: buttonTextColor }}
+              >
+                {user ? "Dashboard" : "Get Started"}
+              </a>
+            )}
+          </div>
         </div>
       </nav>
     </div>
