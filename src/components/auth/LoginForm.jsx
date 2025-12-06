@@ -1,9 +1,12 @@
 'use client';
 import { useState } from 'react';
 import { supabase } from '../../lib/supabase';
+import { AlertDialog, AlertDialogContent, AlertDialogHeader, AlertDialogTitle, AlertDialogDescription, AlertDialogFooter, AlertDialogAction } from '../animate-ui/components/radix/alert-dialog';
 
 const LoginForm = ({ onLogin, onSwitchToSignup }) => {
   const [formData, setFormData] = useState({ email: '', password: '' });
+  const [showAlert, setShowAlert] = useState(false);
+  const [alertMessage, setAlertMessage] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -12,7 +15,8 @@ const LoginForm = ({ onLogin, onSwitchToSignup }) => {
       password: formData.password,
     });
     if (error) {
-      alert(error.message);
+      setAlertMessage(error.message);
+      setShowAlert(true);
     } else {
       onLogin(data.user.email);
     }
@@ -27,11 +31,13 @@ const LoginForm = ({ onLogin, onSwitchToSignup }) => {
     });
     
     if (error) {
-      alert(error.message);
+      setAlertMessage(error.message);
+      setShowAlert(true);
     }
   };
 
   return (
+    <>
     <form onSubmit={handleSubmit} className="space-y-4">
       <div>
         <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
@@ -86,6 +92,19 @@ const LoginForm = ({ onLogin, onSwitchToSignup }) => {
         </button>
       </p>
     </form>
+
+    <AlertDialog open={showAlert} onOpenChange={setShowAlert}>
+      <AlertDialogContent from="top" className="sm:max-w-[425px]">
+        <AlertDialogHeader>
+          <AlertDialogTitle>Authentication Error</AlertDialogTitle>
+          <AlertDialogDescription>{alertMessage}</AlertDialogDescription>
+        </AlertDialogHeader>
+        <AlertDialogFooter>
+          <AlertDialogAction onClick={() => setShowAlert(false)}>OK</AlertDialogAction>
+        </AlertDialogFooter>
+      </AlertDialogContent>
+    </AlertDialog>
+    </>
   );
 };
 
