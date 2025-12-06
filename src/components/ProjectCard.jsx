@@ -1,6 +1,9 @@
 'use client';
+import { useState } from 'react';
+import { Heart, Bookmark } from 'lucide-react';
 import Crown from './Crown';
 import PixelCard from './PixelCard';
+import { Toggle } from './ui/toggle';
 
 const ProjectCard = ({ project, rank, isTop4 = false }) => {
   const cardHeight = isTop4 ? (rank === 1 ? 'h-96' : rank === 2 ? 'h-88' : 'h-80') : 'h-72';
@@ -28,11 +31,26 @@ const ProjectCard = ({ project, rank, isTop4 = false }) => {
           </div>
           
           <div className="space-y-2">
-            <div className="flex justify-center gap-6 text-lg">
-              <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm border border-white/30 px-3 py-1 rounded-full">
-                <span className="text-red-500">❤️</span>
-                <span className="font-semibold text-black">{project.likes}</span>
-              </div>
+            <div className="flex justify-center gap-3 text-lg">
+              <Toggle
+                aria-label="Toggle like"
+                size="sm"
+                variant="outline"
+                className="data-[state=on]:bg-transparent data-[state=on]:*:[svg]:fill-red-500 data-[state=on]:*:[svg]:stroke-red-500"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <Heart className="w-4 h-4" />
+                <span className="font-semibold text-black ml-1">{project.likes}</span>
+              </Toggle>
+              <Toggle
+                aria-label="Toggle bookmark"
+                size="sm"
+                variant="outline"
+                className="data-[state=on]:bg-transparent data-[state=on]:*:[svg]:fill-blue-500 data-[state=on]:*:[svg]:stroke-blue-500"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <Bookmark className="w-4 h-4" />
+              </Toggle>
               <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm border border-white/30 px-3 py-1 rounded-full">
                 <span className="text-blue-500">👥</span>
                 <span className="font-semibold text-black">{project.collaborators}</span>
@@ -75,11 +93,26 @@ const ProjectCard = ({ project, rank, isTop4 = false }) => {
         </div>
         
         <div className="space-y-2">
-          <div className="flex justify-center gap-6 text-lg">
-            <div className="flex items-center gap-2 bg-white/50 px-3 py-1 rounded-full">
-              <span className="text-red-500">❤️</span>
-              <span className="font-semibold text-gray-700">{project.likes}</span>
-            </div>
+          <div className="flex justify-center gap-3 text-lg">
+            <Toggle
+              aria-label="Toggle like"
+              size="sm"
+              variant="outline"
+              className="data-[state=on]:bg-transparent data-[state=on]:*:[svg]:fill-red-500 data-[state=on]:*:[svg]:stroke-red-500"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <Heart className="w-4 h-4" />
+              <span className="font-semibold text-gray-700 ml-1">{project.likes}</span>
+            </Toggle>
+            <Toggle
+              aria-label="Toggle bookmark"
+              size="sm"
+              variant="outline"
+              className="data-[state=on]:bg-transparent data-[state=on]:*:[svg]:fill-blue-500 data-[state=on]:*:[svg]:stroke-blue-500"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <Bookmark className="w-4 h-4" />
+            </Toggle>
             <div className="flex items-center gap-2 bg-white/50 px-3 py-1 rounded-full">
               <span className="text-blue-500">👥</span>
               <span className="font-semibold text-gray-700">{project.collaborators}</span>

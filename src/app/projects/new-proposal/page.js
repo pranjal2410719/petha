@@ -5,6 +5,7 @@ import { createProject } from '../../../lib/database';
 import { PROJECT_CATEGORIES, PROJECT_STATUSES, BUDGET_RANGES } from '../../../utils/constants';
 import CardNav from '../../../components/CardNav';
 import Footer from '../../../components/Footer';
+import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from '../../../components/ui/select';
 
 export default function NewProposal() {
   const [user, setUser] = useState(null);
@@ -186,44 +187,51 @@ export default function NewProposal() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-left text-sm font-medium text-gray-700 mb-2">Category *</label>
-                  <select 
-                    value={formData.category}
-                    onChange={(e) => setFormData({...formData, category: e.target.value})}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
-                    required
-                  >
-                    <option value="">Select Category</option>
-                    {PROJECT_CATEGORIES.map(category => (
-                      <option key={category} value={category}>{category}</option>
-                    ))}
-                  </select>
+                  <Select value={formData.category} onValueChange={(value) => setFormData({...formData, category: value})} required>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select Category" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectGroup>
+                        {PROJECT_CATEGORIES.map(category => (
+                          <SelectItem key={category} value={category}>{category}</SelectItem>
+                        ))}
+                      </SelectGroup>
+                    </SelectContent>
+                  </Select>
                 </div>
                 <div>
                   <label className="block text-left text-sm font-medium text-gray-700 mb-2">Budget Range</label>
-                  <select 
-                    value={formData.budget}
-                    onChange={(e) => setFormData({...formData, budget: e.target.value})}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
-                  >
-                    {BUDGET_RANGES.map(budget => (
-                      <option key={budget} value={budget}>{budget}</option>
-                    ))}
-                  </select>
+                  <Select value={formData.budget} onValueChange={(value) => setFormData({...formData, budget: value})}>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select Budget" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectGroup>
+                        {BUDGET_RANGES.map(budget => (
+                          <SelectItem key={budget} value={budget}>{budget}</SelectItem>
+                        ))}
+                      </SelectGroup>
+                    </SelectContent>
+                  </Select>
                 </div>
               </div>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-left text-sm font-medium text-gray-700 mb-2">Project Status</label>
-                  <select 
-                    value={formData.status}
-                    onChange={(e) => setFormData({...formData, status: e.target.value})}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
-                  >
-                    {PROJECT_STATUSES.map(status => (
-                      <option key={status} value={status}>{status}</option>
-                    ))}
-                  </select>
+                  <Select value={formData.status} onValueChange={(value) => setFormData({...formData, status: value})}>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select Status" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectGroup>
+                        {PROJECT_STATUSES.map(status => (
+                          <SelectItem key={status} value={status}>{status}</SelectItem>
+                        ))}
+                      </SelectGroup>
+                    </SelectContent>
+                  </Select>
                 </div>
                 <div>
                   <label className="block text-left text-sm font-medium text-gray-700 mb-2">Start Date</label>

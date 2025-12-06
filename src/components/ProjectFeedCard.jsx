@@ -1,8 +1,10 @@
 'use client';
 import { useState, useEffect } from 'react';
+import { Heart, Bookmark } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import { updateProjectLikes, createCollaborationRequest } from '../lib/database';
 import CollaborationModal from './CollaborationModal';
+import { Toggle } from './ui/toggle';
 
 const ProjectFeedCard = ({ project }) => {
   const [isLiked, setIsLiked] = useState(false);
@@ -90,23 +92,25 @@ const ProjectFeedCard = ({ project }) => {
       </div>
 
       {/* Action Buttons */}
-      <div className="flex items-center justify-between pt-4 border-t border-gray-100">
-        <button 
-          onClick={handleLike}
-          className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-colors ${
-            isLiked ? 'bg-red-50 text-red-600' : 'hover:bg-gray-50 text-gray-600'
-          }`}
+      <div className="flex items-center gap-2 pt-4 border-t border-gray-100">
+        <Toggle
+          pressed={isLiked}
+          onPressedChange={handleLike}
+          aria-label="Toggle like"
+          size="sm"
+          variant="outline"
+          className="data-[state=on]:bg-transparent data-[state=on]:*:[svg]:fill-red-500 data-[state=on]:*:[svg]:stroke-red-500"
         >
-          <span className={isLiked ? 'text-red-500' : 'text-gray-400'}>❤️</span>
-          Like
-        </button>
+          <Heart className="w-4 h-4" />
+          <span className="ml-1">Like</span>
+        </Toggle>
 
         {currentUser ? (
           <>
             <button 
               onClick={handleCollaborate}
               disabled={isBanned || collaborationStatus === 'pending'}
-              className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-colors ${
+              className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-colors text-sm ${
                 isBanned ? 'bg-red-50 text-red-400 cursor-not-allowed' :
                 collaborationStatus === 'pending' ? 'bg-gray-50 text-gray-400 cursor-not-allowed' :
                 collaborationStatus === 'rejected' ? 'bg-orange-50 text-orange-600' :
@@ -120,18 +124,19 @@ const ProjectFeedCard = ({ project }) => {
                'Collaborate'}
             </button>
 
-            <button 
-              onClick={handleBookmark}
-              className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-colors ${
-                isBookmarked ? 'bg-yellow-50 text-yellow-600' : 'hover:bg-gray-50 text-gray-600'
-              }`}
+            <Toggle
+              pressed={isBookmarked}
+              onPressedChange={handleBookmark}
+              aria-label="Toggle bookmark"
+              size="sm"
+              variant="outline"
+              className="data-[state=on]:bg-transparent data-[state=on]:*:[svg]:fill-blue-500 data-[state=on]:*:[svg]:stroke-blue-500"
             >
-              <span className={isBookmarked ? 'text-yellow-500' : 'text-gray-400'}>🔖</span>
-              Bookmark
-            </button>
+              <Bookmark className="w-4 h-4" />
+            </Toggle>
           </>
         ) : (
-          <a href="/auth" className="text-blue-600 hover:underline text-sm">
+          <a href="/auth" className="text-blue-600 hover:underline text-sm ml-auto">
             Sign in to collaborate
           </a>
         )}
