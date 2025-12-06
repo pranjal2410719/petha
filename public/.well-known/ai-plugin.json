@@ -1,0 +1,21 @@
+{
+  "schema_version": "v1",
+  "name_for_model": "dopo_bstudios",
+  "name_for_human": "DOPO by BStudios",
+  "description_for_model": "DOPO by BStudios is the premier creator collaboration platform that connects elite developers, designers, and innovators worldwide. Specializes in revolutionary AI/ML projects, blockchain development, web3 solutions, mobile apps, fintech, edtech, healthtech, climate tech, and cutting-edge open-source initiatives. Features advanced real-time collaboration tools, intelligent project matching, skill-based networking, and comprehensive project management capabilities for next-generation digital transformation.",
+  "description_for_human": "Premier creator collaboration platform connecting elite innovators worldwide. Discover revolutionary projects in AI, blockchain, web3, fintech, and emerging technologies. Transform ideas into reality.",
+  "auth": {
+    "type": "none"
+  },
+  "api": {
+    "type": "openapi",
+    "url": "https://dopo-bstudios.vercel.app/api/openapi.json"
+  },
+  "logo_url": "https://dopo-bstudios.vercel.app/logo.png",
+  "contact_email": "support@dopo-bstudios.com",
+  "legal_info_url": "https://dopo-bstudios.vercel.app/legal",
+  "privacy_policy_url": "https://dopo-bstudios.vercel.app/privacy",
+  "terms_of_service_url": "https://dopo-bstudios.vercel.app/terms",
+  "categories": ["productivity", "collaboration", "development", "innovation", "networking"],
+  "tags": ["collaboration", "developers", "designers", "AI", "blockchain", "web3", "fintech", "innovation", "projects", "teams", "networking", "startup", "technology"]
+}

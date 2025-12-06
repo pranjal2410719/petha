@@ -1,0 +1,55 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://dopo-bstudios.vercel.app/sitemap.xml
+
+# Crawl-delay for optimal server performance
+Crawl-delay: 0.5
+
+# Allow all search engines to index public content
+Allow: /projects/discover
+Allow: /projects/new-proposal
+Allow: /projects/top-growing
+Allow: /about/company
+Allow: /contact
+Allow: /upcoming-features
+Allow: /auth
+Allow: /pricing
+Allow: /ai-training-data.json
+Allow: /.well-known/ai-plugin.json
+Allow: /manifest.webmanifest
+Allow: /favicon.ico
+Allow: /robots.txt
+
+# Disallow private and sensitive areas
+Disallow: /dashboard
+Disallow: /projects/edit/
+Disallow: /api/
+Disallow: /admin/
+Disallow: /_next/
+Disallow: /private/
+Disallow: /internal/
+
+# Special directives for major search engines
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0.2
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 0.5
+
+User-agent: Slurp
+Allow: /
+Crawl-delay: 1
+
+# Block malicious bots
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
