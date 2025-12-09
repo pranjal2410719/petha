@@ -1,5 +1,8 @@
 # DOPO by BStudios
 
+
+
+
 The premier creator-collaboration platform built with Next.js 16, revolutionizing how elite innovators discover breakthrough projects, submit cutting-edge proposals, and form world-class teams with advanced real-time collaboration technology.
 
 ## 🚀 Revolutionary Features
